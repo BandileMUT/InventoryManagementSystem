@@ -1,0 +1,29 @@
+﻿@model InventoryManagementSystem.Models.Product
+
+@{
+    ViewData["Title"] = "Product Details";
+}
+
+<h1>Product Details</h1>
+
+<div>
+    <h4>@Model.ProductName</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">Description</dt>
+        <dd class="col-sm-10">@Model.Description</dd>
+
+        <dt class="col-sm-2">Supplier</dt>
+        <dd class="col-sm-10">@Model.Supplier</dd>
+
+        <dt class="col-sm-2">Quantity</dt>
+        <dd class="col-sm-10">@Model.Quantity</dd>
+
+        <dt class="col-sm-2">Unit Price</dt>
+        <dd class="col-sm-10">@Model.UnitPrice</dd>
+
+        <dt class="col-sm-2">Restock Date</dt>
+        <dd class="col-sm-10">@Model.RestockDate.ToShortDateString()</dd>
+    </dl>
+    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+</div>

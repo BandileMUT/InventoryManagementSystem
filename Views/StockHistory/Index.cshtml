@@ -1,0 +1,29 @@
+﻿@model IEnumerable<InventoryManagementSystem.Models.StockHistory>
+
+@{
+    ViewData["Title"] = "Stock History";
+}
+
+<h1>Stock History</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Product Name</th>
+            <th>Quantity Changed</th>
+            <th>Change Date</th>
+            <th>Note</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Product.ProductName</td>
+                <td>@item.QuantityChanged</td>
+                <td>@item.ChangeDate.ToString("yyyy-MM-dd HH:mm")</td>
+                <td>@item.Note</td>
+            </tr>
+        }
+    </tbody>
+</table>
