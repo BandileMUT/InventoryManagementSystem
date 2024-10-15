@@ -20,6 +20,8 @@
 <!-- Chart Container -->
 <canvas id="stockChart" width="400" height="200"></canvas>
 
+<a asp-controller="Home" asp-action="Index" class="btn btn-secondary">Back To Home</a>
+
 @section Scripts {
     <script>
         var ctx = document.getElementById('stockChart').getContext('2d');

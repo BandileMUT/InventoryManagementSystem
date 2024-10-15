@@ -24,11 +24,15 @@
     <header>
         <div id="sidebar">
             <div class="sidebar-header">
-                <h3 class="p-2 text-white"><img src="~/Img/logo.png" class="img-fluid" /></h3>
+                <h3 class="p-2 text-white">
+                    <a asp-controller="Home" asp-action="Index">
+                        <img src="~/Img/logo.png" class="img-fluid" />
+                    </a>
+                </h3>
             </div>
             <ul class="list-unstyled component m-0">
                 <li class="">
-                    <a asp-area="" asp-controller="Home" asp-action="Index" class="dashboard"><i class="material-icons">dashboard</i>Dashboard </a>
+                    <a asp-area="" asp-controller="Products" asp-action="Dashboard" class="dashboard"><i class="material-icons">dashboard</i>Dashboard </a>
                 </li>
 
                 <li class="">

@@ -4,21 +4,11 @@
 
 
 <div class="container mt-4">
-    <div class="d-flex justify-content-between">
-        <!-- Quicklink for Products -->
-        <div class="card p-3 flex-fill me-3 text-center bg-danger " style="width: 8rem;">
-            <div class="card-body">
-                <i class="material-icons" style="font-size: 48px;">shopping_cart</i>
-                <h3>No. of products</h3>
-            </div>
-        </div>
-
-        <!-- Quicklink for Reports -->
-        <div class="card p-3 flex-fill text-center bg-warning" style="width: 8rem;">
-            <div class="card-body">
-                <i class="material-icons" style="font-size: 48px;">assessment</i>
-                <h3>Total reports</h3>
-            </div>
-        </div>
+    <div class="jumbotron text-center">
+        <h1 class="display-4">Welcome to the Inventory Management System!</h1>
+        <p class="lead">A simple and efficient solution to track and manage stock for your business.</p>
+        <hr class="my-4">
+        <p>Stay on top of your inventory, monitor stock levels, and prevent stock loss. With real-time updates, tracking products has never been easier!</p>
+        <a class="btn btn-primary btn-lg" href="@Url.Action("Index", "Products")" role="button">Manage Products</a>
     </div>
 </div>
