@@ -136,6 +136,27 @@ namespace InventoryManagementSystem.Controllers
             return View(product); // Return the Details view with the product model
         }
 
+        public IActionResult Dashboard()
+        {
+            // Get all products
+            var products = _context.Products.ToList();
+
+            // Calculate total inventory value
+            decimal totalInventoryValue = products.Sum(p => p.Quantity * p.UnitPrice);
+
+            // Find low-stock products (for example, if quantity is less than 5)
+            var lowStockProducts = products.Where(p => p.Quantity < 5).ToList();
+
+            // Pass data to the view
+            ViewBag.TotalInventoryValue = totalInventoryValue;
+            ViewBag.LowStockProducts = lowStockProducts.Count;
+            ViewBag.ProductNames = products.Select(p => p.ProductName).ToArray();
+            ViewBag.ProductQuantities = products.Select(p => p.Quantity).ToArray();
+
+            return View(products);
+        }
+
+
         private bool ProductExists(int id)
         {
             return _context.Products.Any(e => e.ProductId == id);
