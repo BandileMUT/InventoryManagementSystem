@@ -40,6 +40,12 @@
     </div>
 
     <div class="form-group">
+        <label asp-for="ExpiryDate"></label>
+        <input asp-for="ExpiryDate" class="form-control" type="date" />
+        <span asp-validation-for="ExpiryDate" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
         <label asp-for="RestockDate"></label>
         <input asp-for="RestockDate" class="form-control" type="date" />
         <span asp-validation-for="RestockDate" class="text-danger"></span>

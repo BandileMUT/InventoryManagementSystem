@@ -11,6 +11,10 @@
     <div class="col-md-6">
         <h3>Low Stock Alerts: @ViewBag.LowStockProducts</h3>
     </div>
+    <div id="expiryAlerts" class="alert alert-danger" style="display: none;">
+        <strong>Expiry Alert:</strong>
+        <ul id="expiryList"></ul>
+    </div>
 </div>
 
 <!-- Chart Container -->
@@ -39,5 +43,38 @@
                 }
             }
         });
+    </script>
+
+    <script>
+        // Function to check for expiring products
+        function checkExpiry() {
+            $.ajax({
+                url: '@Url.Action("GetExpiringSoonItems")',
+                type: 'GET',
+                success: function (data) {
+                    var expiryList = $("#expiryList");
+                    expiryList.empty(); // Clear existing alerts
+
+                    if (data.length > 0) {
+                        // Show the alert box
+                        $("#expiryAlerts").show();
+
+                        // List expiring items
+                        data.forEach(function (item) {
+                            expiryList.append("<li>" + item.productName + " (Expiry: " + new Date(item.expiryDate).toLocaleDateString() + ")</li>");
+                        });
+                    } else {
+                        // Hide the alert box if no expiring items
+                        $("#expiryAlerts").hide();
+                    }
+                }
+            });
+        }
+
+        // Check for expiring products every 30 seconds
+        setInterval(checkExpiry, 30000);
+
+        // Call the function initially
+        checkExpiry();
     </script>
 }

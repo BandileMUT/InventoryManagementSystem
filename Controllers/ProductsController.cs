@@ -62,7 +62,7 @@ namespace InventoryManagementSystem.Controllers
         // POST: Products/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ProductId,ProductName,Description,Supplier,Quantity,UnitPrice,RestockDate")] Product product)
+        public async Task<IActionResult> Edit(int id, [Bind("ProductId,ProductName,Description,Supplier,Quantity,UnitPrice,ExpiryDate,RestockDate")] Product product)
         {
             if (id != product.ProductId)
             {
@@ -155,6 +155,22 @@ namespace InventoryManagementSystem.Controllers
 
             return View(products);
         }
+
+        public JsonResult GetExpiringSoonItems()
+        {
+            DateTime upcomingDate = DateTime.Now.AddDays(7); // Notify for products expiring in 7 days
+            var expiringItems = _context.Products
+                .Where(p => p.ExpiryDate.HasValue && p.ExpiryDate <= upcomingDate)
+                .Select(p => new
+                {
+                    ProductName = p.ProductName,
+                    ExpiryDate = p.ExpiryDate
+                })
+                .ToList();
+
+            return Json(expiringItems);
+        }
+
 
 
         private bool ProductExists(int id)

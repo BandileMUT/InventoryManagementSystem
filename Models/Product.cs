@@ -28,6 +28,9 @@ namespace InventoryManagementSystem.Models
         [DataType(DataType.Date)]
         public DateTime RestockDate { get; set; }
 
+        [DataType(DataType.Date)]
+        public DateTime? ExpiryDate { get; set; } // Allow nullable for products without expiry
+
         // Calculated Property
         public decimal TotalValue => Quantity * UnitPrice;
     }
