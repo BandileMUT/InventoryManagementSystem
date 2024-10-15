@@ -9,29 +9,28 @@ namespace InventoryManagementSystem.Models
         [Key]
         public int ProductId { get; set; }
 
-        [Required]
-        [StringLength(100)]
+        [Required(ErrorMessage = "Product name is required")]
+        [StringLength(100, ErrorMessage = "Product name cannot be longer than 100 characters")]
         public string ProductName { get; set; }
 
-        [StringLength(200)]
+        [StringLength(200, ErrorMessage = "Description cannot be longer than 200 characters")]
         public string Description { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Supplier is required")]
         public string Supplier { get; set; }
 
-        [Range(0, int.MaxValue)]
+        [Range(0, int.MaxValue, ErrorMessage = "Quantity must be a positive number")]
         public int Quantity { get; set; }
 
-        [Range(0, double.MaxValue)]
+        [Range(0.01, double.MaxValue, ErrorMessage = "Unit price must be greater than zero")]
         public decimal UnitPrice { get; set; }
 
-        [DataType(DataType.Date)]
+        [DataType(DataType.Date, ErrorMessage = "Invalid date format")]
         public DateTime RestockDate { get; set; }
 
         [DataType(DataType.Date)]
-        public DateTime? ExpiryDate { get; set; } // Allow nullable for products without expiry
-
-        // Calculated Property
+        public DateTime? ExpiryDate { get; set; } 
+    
         public decimal TotalValue => Quantity * UnitPrice;
     }
 }
