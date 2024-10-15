@@ -2,7 +2,23 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between">
+        <!-- Quicklink for Products -->
+        <div class="card p-3 flex-fill me-3 text-center bg-danger " style="width: 8rem;">
+            <div class="card-body">
+                <i class="material-icons" style="font-size: 48px;">shopping_cart</i>
+                <h3>No. of products</h3>
+            </div>
+        </div>
+
+        <!-- Quicklink for Reports -->
+        <div class="card p-3 flex-fill text-center bg-warning" style="width: 8rem;">
+            <div class="card-body">
+                <i class="material-icons" style="font-size: 48px;">assessment</i>
+                <h3>Total reports</h3>
+            </div>
+        </div>
+    </div>
 </div>
